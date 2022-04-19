@@ -34,30 +34,30 @@ public class CompanyCreditCardServiceImpl implements CompanyCreditCardService {
 	}
 
 	@Override
-	public Mono<CompanyCreditCard> update(CompanyCreditCard companyCredit) {
-		return companyCreditCardRepository.findById(companyCredit.getId()).flatMap(c -> {
-			companyCredit.setModifyUser(companyCredit.getModifyUser());
-			companyCredit.setModifyDate(new Date());
-			return companyCreditCardRepository.save(companyCredit);
+	public Mono<CompanyCreditCard> update(CompanyCreditCard companyCreditCard) {
+		return companyCreditCardRepository.findById(companyCreditCard.getId()).flatMap(c -> {
+			companyCreditCard.setModifyUser(companyCreditCard.getModifyUser());
+			companyCreditCard.setModifyDate(new Date());
+			return companyCreditCardRepository.save(companyCreditCard);
 		}).switchIfEmpty(Mono.error(new CustomNotFoundException("CompanyCreditCard not found")));
 	}
 
 	@Override
-	public Mono<CompanyCreditCard> save(CompanyCreditCard companyCredit) {
-		return companyCreditCardRepository.save(companyCredit);
+	public Mono<CompanyCreditCard> save(CompanyCreditCard companyCreditCard) {
+		return companyCreditCardRepository.save(companyCreditCard);
 	}
 
 	@Override
-	public Mono<Void> deleteNonLogic(CompanyCreditCard companyCredit) {
-		return companyCreditCardRepository.findById(companyCredit.getId()).flatMap(c -> {
+	public Mono<Void> deleteNonLogic(CompanyCreditCard companyCreditCard) {
+		return companyCreditCardRepository.findById(companyCreditCard.getId()).flatMap(c -> {
 			return companyCreditCardRepository.delete(c);
 		}).switchIfEmpty(Mono.error(new CustomNotFoundException("CompanyCreditCard not found")));
 	}
 
 	@Override
-	public Mono<CompanyCreditCard> deleteLogic(CompanyCreditCard companyCredit) {
-		return companyCreditCardRepository.findById(companyCredit.getId()).flatMap(c -> {
-			c.setModifyUser(companyCredit.getModifyUser());
+	public Mono<CompanyCreditCard> deleteLogic(CompanyCreditCard companyCreditCard) {
+		return companyCreditCardRepository.findById(companyCreditCard.getId()).flatMap(c -> {
+			c.setModifyUser(companyCreditCard.getModifyUser());
 			c.setModifyDate(new Date());
 			return companyCreditCardRepository.save(c);
 		}).switchIfEmpty(Mono.error(new CustomNotFoundException("CompanyCreditCard not found")));
