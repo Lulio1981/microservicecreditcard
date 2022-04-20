@@ -23,7 +23,7 @@ public class CompanyCreditController {
 	private CompanyCreditCardService companyCreditCardService;
 
 	@PostMapping
-	public Mono<CompanyCreditCard> createClient(@Valid @RequestBody CompanyCreditCard companyCreditCard) {
+	public Mono<CompanyCreditCard> createCompanyCreditCard(@Valid @RequestBody CompanyCreditCard companyCreditCard) {
 		return companyCreditCardService.save(companyCreditCard);
 	}
 
@@ -38,17 +38,17 @@ public class CompanyCreditController {
 	}
 
 	@PutMapping
-	public Mono<CompanyCreditCard> updateClientCredit(@RequestBody CompanyCreditCard companyCreditCard) {
+	public Mono<CompanyCreditCard> updateCompanyCreditCard(@RequestBody CompanyCreditCard companyCreditCard) {
 		return companyCreditCardService.update(companyCreditCard);
 	}
 
 	@DeleteMapping
-	public Mono<CompanyCreditCard> deleteClientCredit(@Valid @RequestBody CompanyCreditCard companyCreditCard) {
+	public Mono<CompanyCreditCard> deleteCcompanyCreditCard(@Valid @RequestBody CompanyCreditCard companyCreditCard) {
 		return companyCreditCardService.deleteLogic(companyCreditCard);
 	}
 
 	@GetMapping("/idCompany/{idCompany}")
-	public Mono<CompanyCreditCard> searchByIdClient(@PathVariable String idCompany) {
+	public Mono<CompanyCreditCard> searchByIdCompany(@PathVariable String idCompany) {
 		return companyCreditCardService.findByIdCompany(idCompany);
 	}
 }
