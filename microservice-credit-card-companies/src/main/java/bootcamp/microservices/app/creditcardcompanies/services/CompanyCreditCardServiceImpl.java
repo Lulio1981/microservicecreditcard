@@ -63,4 +63,9 @@ public class CompanyCreditCardServiceImpl implements CompanyCreditCardService {
 		}).switchIfEmpty(Mono.error(new CustomNotFoundException("CompanyCreditCard not found")));
 	}
 
+	@Override
+	public Mono<CompanyCreditCard> findByIdCompany(String idCompany) {
+		return companyCreditCardRepository.findByIdCompany(idCompany)
+				.switchIfEmpty(Mono.error(new CustomNotFoundException("CompanyCreditCard not found")));
+	}
 }

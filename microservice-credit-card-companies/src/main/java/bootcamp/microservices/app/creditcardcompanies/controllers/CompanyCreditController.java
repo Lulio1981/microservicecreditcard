@@ -47,4 +47,8 @@ public class CompanyCreditController {
 		return companyCreditCardService.deleteLogic(companyCreditCard);
 	}
 
+	@GetMapping("/idCompany/{idCompany}")
+	public Mono<CompanyCreditCard> searchByIdClient(@PathVariable String idCompany) {
+		return companyCreditCardService.findByIdCompany(idCompany);
+	}
 }

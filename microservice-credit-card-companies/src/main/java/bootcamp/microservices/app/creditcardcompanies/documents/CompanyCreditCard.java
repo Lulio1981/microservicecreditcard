@@ -15,7 +15,7 @@ public class CompanyCreditCard {
 
 	private String creditCardNumber;
 
-	private Company company;
+	private String idCompany;
 
 	private Double creditLine;
 
